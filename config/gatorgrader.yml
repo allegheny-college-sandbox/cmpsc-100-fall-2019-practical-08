@@ -1,0 +1,31 @@
+---
+name: practical-07
+break: true
+indent: 4
+---
+src/main:
+    java:
+        centiles/DisplayCentile.java:
+            ConfirmFileExists
+            MatchFileRegex --regex "Fraction\s[A-Za-z0-9]+\s" --count 2 --exact
+            MatchFileRegex --regex "new\sFraction\(earned,(\s)?possible\)" --count 1 --exact
+            MatchFileRegex --regex "Scanner\s[A-Za-z0-9]+\s=\snew\sScanner\(System\.in\)" --count 1 --exact
+            MatchFileFragment --fragment ".centile()" --count 1 --exact
+            MatchFileFragment --fragment ".fmtPercent()" --count 1 --exact
+            MatchFileFragment --fragment ".toString()" --count 2 --exact
+            MatchFileFragment --fragment ".nextInt()" --count 2 --exact
+            MatchFileFragment --fragment "TODO" --count 0 --exact
+            MatchFileFragment --fragment "{Your Name Here}" --count 0 --exact
+
+src/main:
+    java:
+        centiles/Fraction.java:
+            ConfirmFileExists
+            MatchFileRegex --regex "Fraction\s[A-Za-z0-9]+\s=\snew\sFraction\(numer,(\s)?100\)" --count 1 --exact
+            MatchFileFragment --fragment "(double)" --count 2 --exact
+            MatchFileFragment --fragment "(this.numer * 100) / this.denom" --count 1 --exact
+            MatchFileFragment --fragment "TODO" --count 0 --exact
+            MatchFileFragment --fragment "{Your Name Here}" --count 0 --exact
+
+
+ExecuteCommand --command "gradle build"
